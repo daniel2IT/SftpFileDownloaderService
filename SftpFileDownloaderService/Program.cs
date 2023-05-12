@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,7 +6,6 @@ using Renci.SshNet;
 using Renci.SshNet.Sftp;
 using SftpFileDownloaderService.database;
 using SftpFileDownloaderService.Models;
-using Microsoft.Extensions.Configuration;
 
 public class Program
 {
