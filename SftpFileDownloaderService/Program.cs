@@ -87,6 +87,7 @@ public class SftpService
         }
     }
 
+    // Connect to the SFTP server
     private SftpClient ConnectToSftpServer()
     {
 
@@ -108,17 +109,20 @@ public class SftpService
         return sftpClient;
     }
 
+    // Get the SFTP directory path from the configuration
     private string GetSftpDirectoryPath()
     {
         return _configuration["Sftp:DirectoryPath"];
     }
 
+    // Check if a file is new based on its existence in the database
     private bool IsNewFile(SftpFile file)
     {
-        var existingFile = _dbContext.YourModels.FirstOrDefault(f => f.FileName == file.Name);
+        var existingFile = _dbContext.Files.FirstOrDefault(f => f.FileName == file.Name);
         return existingFile == null;
     }
 
+    // Download a file from the SFTP server and save it locally
     private void DownloadFile(SftpClient sftpClient, SftpFile file)
     {
         var localPath = _configuration["Local:Path"];
@@ -130,6 +134,7 @@ public class SftpService
         }
     }
 
+    // Save the downloaded file information to the database
     private void SaveFileToDatabase(SftpFile file)
     {
         var newFile = new FileModel
@@ -139,7 +144,7 @@ public class SftpService
             CreatedAt = file.LastWriteTime,
         };
 
-        _dbContext.YourModels.Add(newFile);
+        _dbContext.Files.Add(newFile);
         _dbContext.SaveChanges();
     }
 }

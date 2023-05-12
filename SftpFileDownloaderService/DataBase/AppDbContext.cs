@@ -10,15 +10,14 @@ namespace SftpFileDownloaderService.database
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<YourDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
 
-        public DbSet<FileModel> YourModels { get; set; }
+        public DbSet<FileModel> Files { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configure your models and relationships here
         }
     }
 }
