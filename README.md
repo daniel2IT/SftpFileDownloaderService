@@ -1,3 +1,6 @@
+# WORK IN PROGRESS....
+
+
 # SFTP Checking Process
 
 The service is designed to connect to the SFTP server and check for new files at regular intervals of 1 minute. This functionality is implemented using a timer logic that triggers the SFTP checking process.
